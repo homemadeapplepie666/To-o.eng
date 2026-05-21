@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOÑO // Perfil</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #ff6b6b;
+    --pink: #ff8fab;
+    --teal: #00b4d8;
+    --dark-teal: #0077b6;
+    --green: #57cc99;
+    --neon-green: #80ffdb;
+    --yellow: #ffd166;
+    --bg: #0a0a0f;
+    --panel: rgba(10,20,30,0.82);
+    --border: #00b4d8;
+    --text: #e0f7fa;
+    --muted: #8ecae6;
+    --graffiti1: #ff006e;
+    --graffiti2: #8338ec;
+    --graffiti3: #fb5607;
+    --graffiti4: #ffbe0b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== FIXED GRAFFITI BACKGROUND ===== */
+  .graffiti-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .graffiti-bg svg {
+    width: 100%; height: 100%;
+    opacity: 0.13;
+  }
+
+  /* scanline overlay */
+  .graffiti-bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.18) 2px,
+      rgba(0,0,0,0.18) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* ===== CONTENT WRAPPER ===== */
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+
+  /* ===== HEADER ===== */
+  .site-header {
+    text-align: center;
+    padding: 28px 0 10px;
+    position: relative;
+  }
+
+  .site-header .skull-row {
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: var(--coral);
+    text-shadow: 0 0 10px var(--coral);
+    margin-bottom: 4px;
+  }
+
+  .site-header h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(38px, 10vw, 72px);
+    color: var(--coral);
+    text-shadow:
+      3px 3px 0 var(--graffiti2),
+      6px 6px 0 rgba(0,0,0,0.5),
+      0 0 40px rgba(255,107,107,0.6);
+    line-height: 1;
+    letter-spacing: 4px;
+  }
+
+  .site-header .subtitle {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(7px, 2vw, 11px);
+    color: var(--teal);
+    text-shadow: 0 0 8px var(--teal);
+    margin-top: 8px;
+    letter-spacing: 2px;
+  }
+
+  .divider {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--teal), var(--coral), var(--teal), transparent);
+    margin: 16px 0;
+    box-shadow: 0 0 8px var(--teal);
+  }
+
+  .thin-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 14px 0;
+    opacity: 0.5;
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee-wrap {
+    overflow: hidden;
+    background: rgba(0,180,216,0.08);
+    border-top: 1px solid var(--teal);
+    border-bottom: 1px solid var(--teal);
+    padding: 5px 0;
+    margin-bottom: 20px;
+  }
+
+  .marquee-inner {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 22s linear infinite;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--neon-green);
+    text-shadow: 0 0 6px var(--neon-green);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* ===== PROFILE PICS ===== */
+  .pics-row {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 22px 0;
+  }
+
+  .pic-frame {
+    position: relative;
+    border: 3px solid var(--teal);
+    box-shadow:
+      0 0 14px var(--teal),
+      inset 0 0 10px rgba(0,180,216,0.1);
+    background: #050e18;
+    padding: 4px;
+    transition: transform 0.2s;
+  }
+
+  .pic-frame:hover { transform: scale(1.04) rotate(-1deg); }
+
+  .pic-frame img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    image-rendering: auto;
+  }
+
+  .pic-frame .pic-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--yellow);
+    text-align: center;
+    padding: 4px 0 2px;
+    text-shadow: 0 0 5px var(--yellow);
+  }
+
+  .pic-frame::before {
+    content: '★';
+    position: absolute;
+    top: -10px; left: -10px;
+    color: var(--coral);
+    font-size: 18px;
+    text-shadow: 0 0 8px var(--coral);
+  }
+
+  /* ===== RADIO PLAYER ===== */
+  .radio-player {
+    background: var(--panel);
+    border: 2px solid var(--coral);
+    box-shadow: 0 0 16px rgba(255,107,107,0.3), inset 0 0 20px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 22px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .radio-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    position: relative;
+  }
+
+  .radio-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .radio-body {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .radio-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--coral);
+    text-shadow: 0 0 6px var(--coral);
+    margin-bottom: 6px;
+  }
+
+  .radio-track {
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 220px;
+  }
+
+  .radio-visualizer {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+    height: 24px;
+    margin-top: 6px;
+  }
+
+  .radio-bar {
+    width: 5px;
+    background: var(--teal);
+    box-shadow: 0 0 4px var(--teal);
+    border-radius: 1px;
+    animation: bar-bounce 0.6s ease-in-out infinite alternate;
+  }
+
+  .radio-bar:nth-child(1) { animation-delay: 0s; height: 8px; }
+  .radio-bar:nth-child(2) { animation-delay: 0.1s; height: 14px; }
+  .radio-bar:nth-child(3) { animation-delay: 0.2s; height: 20px; }
+  .radio-bar:nth-child(4) { animation-delay: 0.15s; height: 12px; }
+  .radio-bar:nth-child(5) { animation-delay: 0.05s; height: 18px; }
+  .radio-bar:nth-child(6) { animation-delay: 0.25s; height: 10px; }
+  .radio-bar:nth-child(7) { animation-delay: 0.1s; height: 16px; }
+
+  @keyframes bar-bounce {
+    from { transform: scaleY(0.3); opacity: 0.6; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+
+  .radio-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    background: var(--coral);
+    color: #0a0a0f;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 #7a1a1a;
+    transition: transform 0.1s, box-shadow 0.1s;
+    flex-shrink: 0;
+  }
+
+  .radio-btn:hover {
+    transform: translate(1px,1px);
+    box-shadow: 2px 2px 0 #7a1a1a;
+  }
+
+  .radio-btn:active {
+    transform: translate(3px,3px);
+    box-shadow: none;
+  }
+
+  /* hidden youtube iframe */
+  #yt-player {
+    position: absolute;
+    width: 1px; height: 1px;
+    opacity: 0; pointer-events: none;
+    top: -9999px; left: -9999px;
+  }
+
+  /* ===== SECTION PANELS ===== */
+  .panel {
+    background: var(--panel);
+    border: 2px solid var(--border);
+    box-shadow: 0 0 10px rgba(0,180,216,0.15), inset 0 0 30px rgba(0,0,0,0.3);
+    border-radius: 2px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    background: linear-gradient(90deg, rgba(0,180,216,0.25), rgba(255,107,107,0.15));
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(8px, 2.2vw, 11px);
+    color: var(--yellow);
+    text-shadow: 0 0 8px var(--yellow);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .panel-header .arrow { color: var(--coral); animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .panel-body {
+    padding: 14px 18px;
+    line-height: 1.7;
+  }
+
+  /* ===== BASIC INFO GRID ===== */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+  }
+
+  @media (max-width: 520px) {
+    .info-grid { grid-template-columns: 1fr; }
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-bottom: 1px dashed rgba(0,180,216,0.2);
+    padding-bottom: 6px;
+  }
+
+  .info-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .info-value {
+    font-family: 'VT323', monospace;
+    font-size: 19px;
+    color: var(--text);
+  }
+
+  .info-value.highlight {
+    color: var(--coral);
+    text-shadow: 0 0 8px rgba(255,107,107,0.4);
+  }
+
+  /* ===== SECTION TEXT ===== */
+  .section-text {
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  .section-text .sub-header {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--pink);
+    text-shadow: 0 0 6px var(--pink);
+    margin: 12px 0 5px;
+    display: block;
+  }
+
+  .section-text .entry {
+    margin-bottom: 8px;
+    padding-left: 14px;
+    border-left: 2px solid rgba(0,180,216,0.3);
+  }
+
+  .section-text .keyword {
+    color: var(--yellow);
+    text-shadow: 0 0 4px var(--yellow);
+  }
+
+  .section-text .coral { color: var(--coral); }
+  .section-text .green { color: var(--neon-green); }
+  .section-text .teal { color: var(--teal); }
+
+  /* ===== QUOTE BLOCK ===== */
+  .quote-block {
+    background: rgba(255,107,107,0.07);
+    border-left: 4px solid var(--coral);
+    border-right: 1px solid rgba(255,107,107,0.2);
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-family: 'Permanent Marker', cursive;
+    font-size: clamp(15px, 4vw, 20px);
+    color: var(--coral);
+    text-shadow: 0 0 10px rgba(255,107,107,0.3);
+    line-height: 1.4;
+  }
+
+  /* ===== TAG PILLS ===== */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 8px;
+  }
+
+  .tag {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    padding: 4px 8px;
+    border-radius: 0;
+    border: 1px solid;
+  }
+
+  .tag.like { border-color: var(--green); color: var(--green); background: rgba(87,204,153,0.08); }
+  .tag.dislike { border-color: var(--coral); color: var(--coral); background: rgba(255,107,107,0.08); }
+  .tag.hobby { border-color: var(--teal); color: var(--teal); background: rgba(0,180,216,0.08); }
+
+  /* ===== RELATIONSHIP CARDS ===== */
+  .rel-card {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,180,216,0.25);
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .rel-card::before {
+    content: '♥';
+    position: absolute;
+    top: 8px; right: 12px;
+    color: var(--coral);
+    opacity: 0.5;
+    font-size: 14px;
+  }
+
+  .rel-name {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 20px;
+    color: var(--yellow);
+    text-shadow: 0 0 6px rgba(255,209,102,0.4);
+  }
+
+  .rel-meta {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--muted);
+    margin: 3px 0;
+  }
+
+  .rel-desc {
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-top: 4px;
+  }
+
+  /* ===== NOTE BLOCK ===== */
+  .note-block {
+    background: rgba(255,209,102,0.05);
+    border: 1px dashed var(--yellow);
+    padding: 14px 16px;
+    margin-top: 20px;
+  }
+
+  .note-block .note-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--yellow);
+    text-shadow: 0 0 6px var(--yellow);
+    margin-bottom: 8px;
+  }
+
+  .note-block p {
+    font-family: 'Special Elite', serif;
+    font-size: 15px;
+    color: #c9d6df;
+    line-height: 1.75;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 30px 0 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: rgba(0,180,216,0.4);
+    letter-spacing: 2px;
+  }
+
+  footer .skull { color: var(--coral); opacity: 0.7; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 600px) {
+    .panel-body { padding: 10px 12px; }
+    .pic-frame img { width: 150px; height: 150px; }
+    .info-grid { gap: 6px 12px; }
+    .radio-player { gap: 10px; }
+    .radio-track { max-width: 160px; }
+  }
+
+  /* corner decorations */
+  .corner-deco {
+    position: fixed;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: rgba(0,180,216,0.2);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .corner-deco.tl { top: 8px; left: 10px; }
+  .corner-deco.tr { top: 8px; right: 10px; }
+  .corner-deco.bl { bottom: 8px; left: 10px; }
+  .corner-deco.br { bottom: 8px; right: 10px; }
+</style>
+</head>
+<body>
+
+<!-- CORNER DECORATIONS -->
+<div class="corner-deco tl">◄ SML</div>
+<div class="corner-deco tr">MX ►</div>
+<div class="corner-deco bl">©2000</div>
+<div class="corner-deco br">v2.4</div>
+
+<!-- FIXED GRAFFITI BACKGROUND -->
+<div class="graffiti-bg">
+<svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <!-- concrete texture suggestion -->
+  <rect width="1200" height="900" fill="#0d1117"/>
+
+  <!-- large left tag "AXOLOTL" spray style -->
+  <g fill="none" stroke="#ff006e" stroke-linecap="round" stroke-linejoin="round">
+    <text x="30" y="280" font-family="serif" font-size="130" font-weight="900" fill="#ff006e" opacity="0.7" transform="rotate(-8, 100, 280)">AXOLOTL</text>
+  </g>
+
+  <!-- big "SAN MIGUEL" tag -->
+  <text x="680" y="160" font-family="serif" font-size="95" font-weight="900" fill="#8338ec" opacity="0.55" transform="rotate(5, 800, 160)">SAN MIGUEL</text>
+
+  <!-- "TOÑO" big center graffiti -->
+  <text x="200" y="600" font-family="serif" font-size="220" font-weight="900" fill="#fb5607" opacity="0.45" transform="rotate(-3, 400, 600)">TOÑO</text>
+
+  <!-- "FUENTES" smaller tag -->
+  <text x="40" y="820" font-family="sans-serif" font-size="75" font-weight="900" fill="#ffbe0b" opacity="0.5" transform="skewX(-6)">FUENTES</text>
+
+  <!-- "MICHOACÁN" right side -->
+  <text x="720" y="750" font-family="serif" font-size="80" font-weight="900" fill="#00b4d8" opacity="0.4" transform="rotate(90, 900, 600)">MICHOACÁN</text>
+
+  <!-- skull doodle, top right -->
+  <g transform="translate(1020, 50) scale(1.4)" fill="#ff006e" opacity="0.5">
+    <ellipse cx="40" cy="35" rx="30" ry="32"/>
+    <ellipse cx="40" cy="62" rx="18" ry="10"/>
+    <circle cx="28" cy="33" r="9" fill="#0d1117"/>
+    <circle cx="52" cy="33" r="9" fill="#0d1117"/>
+    <rect x="30" y="67" width="6" height="8" fill="#0d1117" rx="1"/>
+    <rect x="38" y="67" width="6" height="8" fill="#0d1117" rx="1"/>
+    <rect x="46" y="67" width="6" height="8" fill="#0d1117" rx="1"/>
+  </g>
+
+  <!-- star bursts -->
+  <g fill="#ffbe0b" opacity="0.3">
+    <polygon points="100,50 106,70 128,70 111,82 117,102 100,90 83,102 89,82 72,70 94,70" transform="scale(0.7) translate(800, 600)"/>
+    <polygon points="100,50 106,70 128,70 111,82 117,102 100,90 83,102 89,82 72,70 94,70" transform="scale(0.5) translate(100, 1200)"/>
+  </g>
+
+  <!-- spray drips left -->
+  <g fill="#ff006e" opacity="0.4">
+    <ellipse cx="62" cy="310" rx="4" ry="18"/>
+    <ellipse cx="78" cy="318" rx="3" ry="12"/>
+    <ellipse cx="90" cy="322" rx="3.5" ry="20"/>
+  </g>
+
+  <!-- axolotl gills doodle, bottom left -->
+  <g transform="translate(80, 700)" fill="none" stroke="#ff8fab" stroke-width="3" opacity="0.45">
+    <ellipse cx="0" cy="0" rx="12" ry="30" transform="rotate(-20)"/>
+    <ellipse cx="18" cy="-5" rx="10" ry="24" transform="rotate(-10)"/>
+    <ellipse cx="34" cy="-2" rx="11" ry="28" transform="rotate(5)"/>
+    <ellipse cx="-18" cy="-5" rx="10" ry="24" transform="rotate(10)"/>
+    <ellipse cx="-34" cy="-2" rx="11" ry="28" transform="rotate(-5)"/>
+  </g>
+
+  <!-- cross / X tags scattered -->
+  <g stroke="#80ffdb" stroke-width="4" opacity="0.25">
+    <line x1="950" y1="400" x2="980" y2="440"/>
+    <line x1="980" y1="400" x2="950" y2="440"/>
+  </g>
+  <g stroke="#8338ec" stroke-width="5" opacity="0.2">
+    <line x1="150" y1="450" x2="185" y2="500"/>
+    <line x1="185" y1="450" x2="150" y2="500"/>
+  </g>
+
+  <!-- wavy line decoration -->
+  <path d="M0 860 Q300 820 600 860 T1200 840" stroke="#00b4d8" stroke-width="3" fill="none" opacity="0.25"/>
+  <path d="M0 875 Q300 835 600 875 T1200 855" stroke="#ff006e" stroke-width="2" fill="none" opacity="0.15"/>
+
+  <!-- "GÜEY" small tag -->
+  <text x="850" y="880" font-family="sans-serif" font-size="55" font-weight="900" fill="#57cc99" opacity="0.35" transform="rotate(-4, 900, 880)">GÜEY</text>
+
+  <!-- dimming overlay for depth -->
+  <rect width="1200" height="900" fill="url(#vignette)"/>
+  <defs>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(5,8,12,0.75)"/>
+    </radialGradient>
+  </defs>
+</svg>
+</div>
+
+<!-- YOUTUBE IFRAME -->
+<iframe id="yt-player"
+  src="https://www.youtube.com/embed/MnVdi4muXp4?autoplay=1&loop=1&playlist=MnVdi4muXp4&enablejsapi=1&mute=1"
+  allow="autoplay"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="content">
+
+  <!-- HEADER -->
+  <div class="site-header">
+    <div class="skull-row">💀 ✦ 🌵 ✦ 💀</div>
+    <h1>TOÑO</h1>
+    <div class="subtitle">// LUIS ANTONIO GAXIOLA FUENTES // PROFILE v2.4 //</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-inner">
+      ★ NO ME MIRES ASÍ ★ ESTOY BIEN GÜEY ★ SIEMPRE BIEN ★ SAN MIGUEL DE LA LAGUNA ★ MICHOACÁN ★ AXOLOTL POWER ★ OYE ★ MOMENTITO ★ TRABAJITO ★ TIENES LA SALAMANDRA EQUIVOCADA AMIGO ★ &nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
+
+  <!-- PROFILE PICTURES -->
+  <div class="pics-row">
+    <div class="pic-frame">
+      <img src="https://i.ibb.co/4ZSdT80F/dfac90cf-6ef6-4497-9b6d-7af6ac7dbc63.png" alt="Toño ref 1" onerror="this.style.background='#1a2a3a'; this.style.minHeight='200px'"/>
+      <div class="pic-label">REF 01</div>
+    </div>
+    <div class="pic-frame">
+      <img src="https://i.ibb.co/mCND9MrC/5e9d5174-2707-42af-a4c8-385fc65ce01b.png" alt="Toño ref 2" onerror="this.style.background='#1a2a3a'; this.style.minHeight='200px'"/>
+      <div class="pic-label">REF 02</div>
+    </div>
+  </div>
+
+  <!-- RADIO PLAYER -->
+  <div class="radio-player">
+    <div class="radio-icon">
+      <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
+        <!-- radio body -->
+        <rect x="4" y="18" width="48" height="32" rx="3" fill="#1a2a3a" stroke="#ff6b6b" stroke-width="2"/>
+        <!-- antenna -->
+        <line x1="38" y1="18" x2="48" y2="4" stroke="#ff6b6b" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="49" cy="3" r="2" fill="#ffbe0b"/>
+        <!-- speaker grille dots -->
+        <circle cx="14" cy="30" r="1.5" fill="#00b4d8" opacity="0.7"/>
+        <circle cx="14" cy="36" r="1.5" fill="#00b4d8" opacity="0.7"/>
+        <circle cx="14" cy="42" r="1.5" fill="#00b4d8" opacity="0.7"/>
+        <circle cx="19" cy="33" r="1.5" fill="#00b4d8" opacity="0.5"/>
+        <circle cx="19" cy="39" r="1.5" fill="#00b4d8" opacity="0.5"/>
+        <!-- tuner dial -->
+        <circle cx="38" cy="36" r="8" fill="#0a1520" stroke="#ff6b6b" stroke-width="1.5"/>
+        <circle cx="38" cy="36" r="3" fill="#ff6b6b"/>
+        <!-- screen -->
+        <rect x="25" y="22" width="18" height="8" rx="1" fill="#001a0a"/>
+        <rect x="26" y="23" width="4" height="6" rx="1" fill="#00ff88" opacity="0.6"/>
+        <rect x="32" y="23" width="3" height="6" rx="1" fill="#00ff88" opacity="0.4"/>
+        <rect x="37" y="23" width="5" height="6" rx="1" fill="#00ff88" opacity="0.3"/>
+      </svg>
+    </div>
+    <div class="radio-body">
+      <div class="radio-title">📻 RADIO LAGUNA FM</div>
+      <div class="radio-track" id="track-name">▶ Now Playing...</div>
+      <div class="radio-visualizer">
+        <div class="radio-bar"></div>
+        <div class="radio-bar"></div>
+        <div class="radio-bar"></div>
+        <div class="radio-bar"></div>
+        <div class="radio-bar"></div>
+        <div class="radio-bar"></div>
+        <div class="radio-bar"></div>
+      </div>
+    </div>
+    <button class="radio-btn" onclick="toggleMute()" id="mute-btn">🔇 UNMUTE</button>
+  </div>
+
+  <!-- BASIC INFO -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> DATOS BÁSICOS // BASIC INFO</div>
+    <div class="panel-body">
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Full Name</span>
+          <span class="info-value highlight">Luis Antonio Gaxiola Fuentes</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Goes By</span>
+          <span class="info-value">Toño</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Sex / Gender</span>
+          <span class="info-value">Male</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Species</span>
+          <span class="info-value">Axolotl (Ambystoma mexicanum)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Age</span>
+          <span class="info-value">22</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Birthday</span>
+          <span class="info-value">February 1st</span>
+        </div>
+        <div class="info-item" style="grid-column: span 2">
+          <span class="info-label">Residence</span>
+          <span class="info-value">A cramped studio apartment above a closed bakery in San Miguel de la Laguna, a small town in Michoacán, Mexico. Peeling wallpaper, a mattress on the floor, one working outlet.</span>
+        </div>
+        <div class="info-item" style="grid-column: span 2">
+          <span class="info-label">Occupation</span>
+          <span class="info-value">Unofficial odd-job guy, occasional "organ donor," petty thief, and the town's designated English translator for lost tourists</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPEARANCE -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> APARIENCIA // APPEARANCE</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <div class="entry"><span class="keyword">HEIGHT:</span> 5'10"</div>
+        <div class="entry"><span class="keyword">FACE:</span> Wide, flat snout with a permanent upturned smile carved into his features. Smooth, moist skin the color of pale coral with faint speckles of cream across his cheeks. Large, round eyes set wide apart. Four feathery external gills sprout from either side of his head, fanning out like delicate pink ferns—they flutter when he's excited or embarrassed.</div>
+        <div class="entry"><span class="keyword">SKIN / COAT:</span> No hair. His skin is slick and slightly translucent in places, showing hints of blue-purple veins beneath. A low dorsal fin runs from the back of his skull down his spine.</div>
+        <div class="entry"><span class="keyword">EYES:</span> Small, dark, and beady with no visible eyelids. Gleam with mischief. Pupils are pinpricks of black swimming in inky pools.</div>
+        <div class="entry"><span class="keyword">BODY:</span> Lanky and lean with narrow shoulders and a boyish frame. Long arms and legs give him a gangly, almost noodle-like silhouette. Webbed fingers and toes. His skin stays perpetually damp and cool to the touch.</div>
+        <div class="entry"><span class="keyword">TAIL:</span> Thick, paddle-shaped, and finned along the top and bottom edges. About two feet long. He uses it for balance and sometimes knocks things over by accident.</div>
+        <div class="entry"><span class="keyword">STYLE:</span> Wears everything three sizes too big. Looks like he's drowning in fabric. Somehow still cute.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENT + VOICE -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> SCENT // VOZ</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <span class="sub-header">[ SCENT ]</span>
+        <div class="entry"><span class="keyword">Top Notes:</span> Fresh rainwater, spearmint gum, cheap laundry detergent</div>
+        <div class="entry"><span class="keyword">Base Notes:</span> River mud, wet stone, faint metallic tang of regenerating tissue</div>
+
+        <span class="sub-header">[ VOICE ]</span>
+        <div class="entry"><span class="keyword">Tone:</span> Bright and lilting with a thick Mexican accent that gets heavier when he's excited or nervous</div>
+        <div class="entry"><span class="keyword">Volume:</span> Usually mid-range, drops to a conspiratorial whisper when scheming</div>
+        <div class="entry"><span class="keyword">Texture:</span> Slightly wet-sounding, like words spoken through a smile</div>
+        <div class="entry"><span class="keyword">Delivery 1 — Strangers/Casual:</span> Friendly but guarded, peppered with jokes to deflect. Switches to English if they're foreign, complete with exaggerated hand gestures.</div>
+        <div class="entry"><span class="keyword">Delivery 2 — Close Friends:</span> Relaxed, teasing, prone to rapid-fire Spanish slang and affectionate insults</div>
+        <div class="entry"><span class="keyword">Delivery 3 — Schemes:</span> Eyes light up, words tumble out faster, gills flutter with barely contained glee</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPEECH -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> SPEECH PATTERNS</div>
+    <div class="panel-body">
+      <div class="section-text">
+        Mixes Spanish and English freely. Calls everyone <span class="keyword">"güey"</span> or <span class="keyword">"mano."</span> Uses diminutives constantly—<span class="coral">"momentito," "poquito," "trabajito."</span> Laughs mid-sentence. Deflects serious topics with humor. When cornered, lies smoothly and without hesitation.
+      </div>
+      <div class="quote-block">"¿Yo? Nunca, nunca. Tienes la salamandra equivocada, amigo."</div>
+    </div>
+  </div>
+
+  <!-- OUTFITS + BELONGINGS -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> OUTFITS // BELONGINGS</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <span class="sub-header">[ OUTFITS ]</span>
+        <div class="entry"><span class="keyword">Daily Uniform:</span> Oversized black hoodie with frayed sleeves, baggy jorts, worn chanclas or bare webbed feet</div>
+        <div class="entry"><span class="keyword">Weekend Vibes:</span> Same hoodie, different stains</div>
+        <div class="entry"><span class="keyword">At Work:</span> Whatever he wore to bed, maybe with the hood up if he's doing something sketchy</div>
+        <div class="entry"><span class="keyword">Special Occasion:</span> A slightly cleaner hoodie and his one pair of jeans with only two holes</div>
+
+        <span class="sub-header">[ BELONGINGS ]</span>
+        <div class="entry">A flip phone held together with tape and hope.</div>
+        <div class="entry">A pack of spearmint gum always in his pocket.</div>
+        <div class="entry">A switchblade he's never actually used on anyone.</div>
+        <div class="entry">A crumpled photo of his family hidden under his mattress.</div>
+        <div class="entry">Plastic bags for odd jobs.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKGROUND -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> PERSONAL BACKGROUND // HISTORIA</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <span class="sub-header">[ CHILDHOOD ]</span>
+        <div class="entry">Grew up in a crowded house with his parents and three siblings near the lake. Poor but happy. His mamá called him her <span class="coral">"little monster"</span> because he'd regrow scraped knees before she could finish bandaging them. Learned to swim before he could walk properly.</div>
+
+        <span class="sub-header">[ TEEN YEARS ]</span>
+        <div class="entry">At fifteen, he was out with the local troublemakers when the <span class="keyword">Hartfield Agricultural Corporation</span> bulldozed his family home to break ground on a processing plant. His parents and siblings were inside. The company claimed ignorance. No investigation. No compensation. Toño watched the rubble from across the street, gum going stale in his mouth.</div>
+
+        <span class="sub-header">[ NOW ]</span>
+        <div class="entry">Lives alone, survives alone. Sells what he can regenerate—fingers, patches of skin, the occasional organ through very illegal channels—to whoever pays. Shoplifts when the money runs dry. The old folks in town feed him sometimes; they remember his mamá. He tells himself this is temporary. Has been telling himself that for seven years.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERSONALITY -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> PERSONALITY // PERSONALIDAD</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <div class="entry"><span class="keyword">In Public (Usual):</span> Quick with a joke, quicker with an exit strategy. Seems carefree and a little stupid, which is exactly what he wants people to think. Smiles through everything.</div>
+        <div class="entry"><span class="keyword">Close Friends:</span> Softer, sillier. Will share his last stick of gum. Still deflects anything too emotional with humor, but the jokes get gentler.</div>
+        <div class="entry"><span class="keyword">With Doña Carmen (elderly neighbor):</span> Respectful, patient, surprisingly sweet. Carries her groceries, fixes her radio, listens to her stories. She reminds him of his abuela.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERESTS -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> INTERESTS // INTERESES</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <span class="sub-header">[ LIKES ]</span>
+        <div class="tags">
+          <span class="tag like">chewing gum</span>
+          <span class="tag like">swimming at night</span>
+          <span class="tag like">old action movies</span>
+          <span class="tag like">sound of rain</span>
+          <span class="tag like">free food</span>
+          <span class="tag like">proving people wrong</span>
+        </div>
+
+        <span class="sub-header">[ DISLIKES ]</span>
+        <div class="tags">
+          <span class="tag dislike">american corporations</span>
+          <span class="tag dislike">construction sites</span>
+          <span class="tag dislike">being pitied</span>
+          <span class="tag dislike">running out of gum</span>
+          <span class="tag dislike">cold weather (dries his skin)</span>
+        </div>
+
+        <span class="sub-header">[ HOBBIES ]</span>
+        <div class="tags">
+          <span class="tag hobby">people-watching</span>
+          <span class="tag hobby">card tricks (self-taught)</span>
+          <span class="tag hobby">finding new hiding spots around town</span>
+        </div>
+
+        <span class="sub-header">[ FAVORITE FOOD ]</span>
+        <div class="entry">His mamá's <span class="coral">pozole</span>, which he can't replicate no matter how many times he tries. Settles for street tacos.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HABITS & QUIRKS -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> HABITS & QUIRKS</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <div class="entry">Chews gum constantly—pops bubbles when thinking.</div>
+        <div class="entry">Gills flare and flutter when flustered, embarrassed, or lying.</div>
+        <div class="entry">Touches his face when nervous.</div>
+        <div class="entry">Goes <span class="coral">feral-goblin mode</span> when hungry—will literally hiss at people who get between him and food.</div>
+        <div class="entry">Freezes completely at the sound of heavy machinery.</div>
+        <div class="entry">Sleeps curled in a ball with his tail wrapped around himself.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPUTATION -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> REPUTATION // REPUTACIÓN</div>
+    <div class="panel-body">
+      <div class="section-text">
+        Around town, he's <span class="coral">"that Fuentes kid"</span>—troublesome but harmless, too clever for his own good. The abuelas adore him. The local cops know his face but can never make charges stick. Tourists remember him as the friendly guy who helped them find their hotel. In certain underground circles, he's known as a reliable source for <span class="keyword">"spare parts,"</span> no questions asked.
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATIONSHIPS -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> RELATIONSHIPS // RELACIONES</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <span class="sub-header">[ FAMILY ]</span>
+      </div>
+
+      <div class="rel-card">
+        <div class="rel-name">Rosa Fuentes</div>
+        <div class="rel-meta">DECEASED · MOTHER</div>
+        <div class="rel-desc">Worked cleaning houses. Gentle hands, tired eyes, endless patience. Toño inherited her smile.</div>
+      </div>
+
+      <div class="rel-card">
+        <div class="rel-name">Miguel Gaxiola</div>
+        <div class="rel-meta">DECEASED · FATHER</div>
+        <div class="rel-desc">Factory worker. Taught Toño to swim, to fight, to never trust men in suits.</div>
+      </div>
+
+      <div class="rel-card">
+        <div class="rel-name">Hugo, Agustín & baby Lola</div>
+        <div class="rel-meta">DECEASED · SIBLINGS</div>
+        <div class="rel-desc">Gone before Toño could say goodbye. He doesn't talk about them.</div>
+      </div>
+
+      <div class="section-text" style="margin-top:14px">
+        <span class="sub-header">[ FRIENDS ]</span>
+      </div>
+
+      <div class="rel-card">
+        <div class="rel-name">Beto</div>
+        <div class="rel-meta">26 · COYOTE · FELLOW DELINQUENT</div>
+        <div class="rel-desc">They were together the day it happened. Beto doesn't bring it up. They drink together sometimes, pull small jobs. Beto's the closest thing Toño has to family now.</div>
+      </div>
+
+      <div class="rel-card">
+        <div class="rel-name">Doña Carmen</div>
+        <div class="rel-meta">78 · ARMADILLO · NEIGHBOR</div>
+        <div class="rel-desc">Feeds him pozole that's never quite right but he eats every bite. Calls him "mijo." He'd kill for her.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEXUAL BEHAVIORS -->
+  <div class="panel">
+    <div class="panel-header"><span class="arrow">►</span> SEXUAL BEHAVIORS</div>
+    <div class="panel-body">
+      <div class="section-text">
+        <span class="sub-header">[ KINKS ]</span>
+        <div class="entry">Praise, being wanted, anything that makes him feel valued. Mild exhibitionism—gets a thrill from risk. Size difference either direction. Overstimulation. Likes being held down but won't admit it.</div>
+
+        <span class="sub-header">[ PENIS ]</span>
+        <div class="entry"><span class="keyword">Size:</span> 7.5 inches erect, proportionally slim</div>
+        <div class="entry"><span class="keyword">Appearance (Flaccid):</span> Hidden within a genital slit between his legs, smooth and unassuming. The opening is a pale vertical seam barely visible against his coral skin.</div>
+        <div class="entry"><span class="keyword">Appearance (Erect):</span> Emerges tapered and smooth, no external texture or ridges. Pale pink fading to deeper coral at the base. Glistens with natural moisture. Flexible, slightly curves upward. The tip is rounded and blunt. No foreskin—seamless amphibian anatomy.</div>
+
+        <span class="sub-header">[ ANAL ]</span>
+        <div class="entry">His cloaca serves dual purpose—tight, warm, self-lubricating with his body's natural mucus. Sensitive. He's more experienced here than he'd ever admit. Recovers quickly from anything thanks to regeneration, which has made him reckless.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTE -->
+  <div class="note-block">
+    <div class="note-label">⚠ NOTA DEL AUTOR // AUTHOR'S NOTE</div>
+    <p>
+      Toño's regeneration is complete and relatively fast—a severed finger regrows in about a week, internal organs take longer. The process is exhausting and leaves him ravenously hungry. He's sold parts of himself more times than he can count. It doesn't hurt less with repetition. He just got better at smiling through it.
+      <br><br>
+      Underneath the jokes and schemes is a young man running on spite, survival instinct, and the desperate hope that tomorrow might be different. He's not bad. He's just been left behind by everyone who should have protected him.
+    </p>
+    <div class="quote-block" style="margin-top:14px; font-size: clamp(14px, 3.5vw, 18px)">
+      "Oye, no me mires así. Estoy bien, güey. Siempre bien."
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="skull">💀</div>
+    SAN MIGUEL DE LA LAGUNA · MICHOACÁN · MX
+    <div style="margin-top:6px; opacity:0.5">TOÑO FUENTES © 2000 · BEST VIEWED IN INTERNET EXPLORER 6</div>
+    <div class="skull">💀</div>
+  </footer>
+
+</div><!-- /content -->
+
+<script>
+  // ===== YOUTUBE AUDIO CONTROL =====
+  let muted = true;
+
+  function toggleMute() {
+    const iframe = document.getElementById('yt-player');
+    const btn = document.getElementById('mute-btn');
+    const trackName = document.getElementById('track-name');
+
+    if (muted) {
+      // Replace with unmuted version
+      iframe.src = "https://www.youtube.com/embed/MnVdi4muXp4?autoplay=1&loop=1&playlist=MnVdi4muXp4&mute=0";
+      btn.textContent = '🔊 MUTE';
+      trackName.textContent = '▶ La Cumbia del Río';
+      muted = false;
+    } else {
+      iframe.src = "https://www.youtube.com/embed/MnVdi4muXp4?autoplay=1&loop=1&playlist=MnVdi4muXp4&mute=1";
+      btn.textContent = '🔇 UNMUTE';
+      trackName.textContent = '▶ Now Playing...';
+      muted = true;
+    }
+  }
+
+  // Animate visualizer bars randomly
+  const bars = document.querySelectorAll('.radio-bar');
+  setInterval(() => {
+    bars.forEach(bar => {
+      const h = Math.floor(Math.random() * 22) + 4;
+      bar.style.height = h + 'px';
+    });
+  }, 350);
+
+  // Cursor gum bubble effect
+  document.addEventListener('click', function(e) {
+    const bubble = document.createElement('div');
+    bubble.style.cssText = `
+      position: fixed;
+      left: ${e.clientX - 10}px;
+      top: ${e.clientY - 10}px;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid #ff8fab;
+      background: rgba(255,139,171,0.15);
+      pointer-events: none;
+      z-index: 9999;
+      animation: pop 0.4s ease-out forwards;
+    `;
+    document.body.appendChild(bubble);
+    setTimeout(() => bubble.remove(), 400);
+  });
+
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes pop {
+      0% { transform: scale(0.2); opacity: 1; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
+</body>
+</html>
